@@ -1,7 +1,7 @@
 ﻿using NPoco;
 using NUnit.Framework;
 
-namespace NPocoSamples
+namespace NPocoSamples.Common
 {
     [TestFixture]
     public class ConnectionTests
@@ -15,7 +15,6 @@ namespace NPocoSamples
                 Assert.AreEqual(1, result);
             }
         }
-
 
         [Test]
         public void TestConnect_WithConnectionStringAndProviderName()

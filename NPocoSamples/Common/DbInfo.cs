@@ -1,6 +1,6 @@
 ﻿using NPoco;
 
-namespace NPocoSamples
+namespace NPocoSamples.Common
 {
     public static class DbInfo
     {

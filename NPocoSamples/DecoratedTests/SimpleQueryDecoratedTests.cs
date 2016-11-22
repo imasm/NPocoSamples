@@ -1,13 +1,14 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using NPoco;
+using NPocoSamples.Common;
 using NPocoSamples.DecoratedModels;
 using NUnit.Framework;
 
-namespace NPocoSamples
+namespace NPocoSamples.DecoratedTests
 {
     [TestFixture]
-    public class SimpleQueryTests : BaseTests
+    public class SimpleQueryDecoratedTests : BaseTests
     {
         [Test]
         public void Test_SingleById()
