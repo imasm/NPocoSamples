@@ -46,9 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseTests.cs" />
     <Compile Include="ConnectionTests.cs" />
     <Compile Include="DbInfo.cs" />
-    <Compile Include="QueryTests.cs" />
+    <Compile Include="DecoratedModels\CategoryDecorated.cs" />
+    <Compile Include="DecoratedModels\ProductDecorated.cs" />
+    <Compile Include="SimpleQueryTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
