@@ -52,6 +52,8 @@
     <Compile Include="DecoratedModels\CategoryDecorated.cs" />
     <Compile Include="DecoratedModels\CustomerDecorated.cs" />
     <Compile Include="DecoratedModels\ProductDecorated.cs" />
+    <Compile Include="DecoratedTests\DeleteDecoratedTests.cs" />
+    <Compile Include="DecoratedTests\SqlQueryDecoratedTests.cs" />
     <Compile Include="DecoratedTests\UpdateDecoratedTests.cs" />
     <Compile Include="Common\TestDatabase.cs" />
     <Compile Include="DecoratedTests\InsertDecoratedTests.cs" />
