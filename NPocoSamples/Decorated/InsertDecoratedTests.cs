@@ -29,9 +29,10 @@ namespace NPocoSamples.Decorated
         {
             using (var db = new TestDatabase(DbInfo.Name))
             {
+                // CategoryId is ignored because AutoIncrement 
+                // is defined in the model
                 var category = new Category()
                 {
-                    //CategoryId = 9, this is ignored becouse AutoIncrement is defined in the model
                     CategoryName = "Custom Category",
                     Description = "Sample category",
                     Picture = null,
@@ -40,7 +41,6 @@ namespace NPocoSamples.Decorated
                 db.BeginTransaction();
                 object result = db.Insert(category);
                 db.CompleteTransaction();
-
 
                 int primaryKey = Convert.ToInt32(result);
                 
@@ -54,21 +54,22 @@ namespace NPocoSamples.Decorated
         public void Insert_With_PrimaryKey_Custom()
         {
             using (var db = new TestDatabase(DbInfo.Name))
-            {
-                db.BeginTransaction();
+            {                
                 var customer = new Customer()
                 {
                     CustomerId = "DEMO",
                     CompanyName = "My company"
                 };
 
+                db.BeginTransaction();
                 object result = db.Insert(customer);
+                db.CompleteTransaction();
+
+
                 string insertedId = Convert.ToString(result);
 
                 Output("Customer inserted with Id = " + insertedId);
-                Assert.That(insertedId, Is.EqualTo(customer.CustomerId));
-
-                db.CompleteTransaction();
+                Assert.That(insertedId, Is.EqualTo(customer.CustomerId));                
             }
         }
     }

@@ -1,4 +1,6 @@
-﻿using NPocoSamples.Common;
+﻿using System.Collections.Generic;
+using System.Linq;
+using NPocoSamples.Common;
 using NPocoSamples.Decorated.Models;
 using NUnit.Framework;
 

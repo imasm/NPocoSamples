@@ -49,6 +49,7 @@ namespace NPocoSamples.Decorated
                 var customer = db.SingleById<Customer>("DEMO");
                 int deleted = db.Delete(customer);
                 db.CompleteTransaction();
+
                 Assert.That(deleted, Is.EqualTo(1));
             }
 
@@ -63,6 +64,7 @@ namespace NPocoSamples.Decorated
                 db.BeginTransaction();
                 int deleted = db.Delete<Customer>((object)"DEMO");
                 db.CompleteTransaction();
+
                 Assert.That(deleted, Is.EqualTo(1));
             }
 
@@ -77,6 +79,7 @@ namespace NPocoSamples.Decorated
                 db.BeginTransaction();
                 int deleted = db.Delete<Customer>("where CustomerId = @0", "DEMO");
                 db.CompleteTransaction();
+
                 Assert.That(deleted, Is.EqualTo(1));
             }
 
@@ -91,7 +94,6 @@ namespace NPocoSamples.Decorated
                 var customer = db.SingleOrDefaultById<Customer>(customerId);
                 Assert.That(customer, Is.Null);
             }
-        }
-        
+        }        
     }
 }
