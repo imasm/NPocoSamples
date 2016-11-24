@@ -80,7 +80,27 @@ namespace NPocoSamples.Decorated
                 Assert.That(result.All(x => x.CategoryId == 1), Is.True);
             }
         }
-        
+
+        [Test]
+        public void Fetch_OneToMany_SqlWithNull()
+        {
+            using (var db = new TestDatabase(DbInfo.Name))
+            {
+                List<Order> orders = db.FetchOneToMany<Order>(x => x.Details,
+                @"select o.*, null npoco_details, d.*
+                    from orders o
+                    left join dbo.[Order Details] d on (o.OrderId = d.OrderId)
+                    where o.OrderId = @0", 10248);
+
+                Assert.That(orders.Count, Is.EqualTo(1));
+
+                var order = orders.First();
+                Assert.That(order, Is.Not.Null);
+                Assert.That(order.Details, Is.Not.Null);
+                Assert.That(order.Details.Count, Is.EqualTo(3));
+            }
+        }
+
         private void AssertIsProduct1(Product product)
         {
             Assert.That(product.ProductId, Is.EqualTo(1));
