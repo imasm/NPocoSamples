@@ -1,5 +1,4 @@
-﻿using System;
-using NPoco;
+﻿using NPoco;
 using NPocoSamples.Common;
 using NPocoSamples.DecoratedModels;
 using NUnit.Framework;

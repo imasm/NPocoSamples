@@ -51,8 +51,13 @@
     <Compile Include="Common\DbInfo.cs" />
     <Compile Include="DecoratedModels\CategoryDecorated.cs" />
     <Compile Include="DecoratedModels\CustomerDecorated.cs" />
+    <Compile Include="DecoratedModels\Order.cs" />
+    <Compile Include="DecoratedModels\OrderDetails.cs" />
     <Compile Include="DecoratedModels\ProductDecorated.cs" />
+    <Compile Include="DecoratedModels\ProductWithOneToManyDecorated.cs" />
+    <Compile Include="DecoratedModels\ProductWithOneToOneDecorated.cs" />
     <Compile Include="DecoratedTests\DeleteDecoratedTests.cs" />
+    <Compile Include="DecoratedTests\LinqQueriesDecoratedTests.cs" />
     <Compile Include="DecoratedTests\SqlQueryDecoratedTests.cs" />
     <Compile Include="DecoratedTests\UpdateDecoratedTests.cs" />
     <Compile Include="Common\TestDatabase.cs" />
