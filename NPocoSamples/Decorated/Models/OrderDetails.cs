@@ -1,6 +1,6 @@
 using NPoco;
 
-namespace NPocoSamples.DecoratedModels
+namespace NPocoSamples.Decorated.Models
 {
     [TableName("Order details")]
     [PrimaryKey(new [] { "OrderId", "ProductId" }, AutoIncrement = false)]

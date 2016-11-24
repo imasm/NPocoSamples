@@ -2,7 +2,7 @@ using System;
 using System.Collections.Generic;
 using NPoco;
 
-namespace NPocoSamples.DecoratedModels
+namespace NPocoSamples.Decorated.Models
 {
     [TableName("Orders")]
     [PrimaryKey("OrderId")]

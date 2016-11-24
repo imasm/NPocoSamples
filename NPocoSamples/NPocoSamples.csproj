@@ -49,20 +49,20 @@
     <Compile Include="Common\BaseTests.cs" />
     <Compile Include="Common\ConnectionTests.cs" />
     <Compile Include="Common\DbInfo.cs" />
-    <Compile Include="DecoratedModels\CategoryDecorated.cs" />
-    <Compile Include="DecoratedModels\CustomerDecorated.cs" />
-    <Compile Include="DecoratedModels\Order.cs" />
-    <Compile Include="DecoratedModels\OrderDetails.cs" />
-    <Compile Include="DecoratedModels\ProductDecorated.cs" />
-    <Compile Include="DecoratedModels\ProductWithOneToManyDecorated.cs" />
-    <Compile Include="DecoratedModels\ProductWithOneToOneDecorated.cs" />
-    <Compile Include="DecoratedTests\DeleteDecoratedTests.cs" />
-    <Compile Include="DecoratedTests\LinqQueriesDecoratedTests.cs" />
-    <Compile Include="DecoratedTests\SqlQueryDecoratedTests.cs" />
-    <Compile Include="DecoratedTests\UpdateDecoratedTests.cs" />
+    <Compile Include="Decorated\Models\Category.cs" />
+    <Compile Include="Decorated\Models\Customer.cs" />
+    <Compile Include="Decorated\Models\Order.cs" />
+    <Compile Include="Decorated\Models\OrderDetails.cs" />
+    <Compile Include="Decorated\Models\Product.cs" />
+    <Compile Include="Decorated\Models\ProductWithForeing.cs" />
+    <Compile Include="Decorated\Models\ProductWithOneToOne.cs" />
+    <Compile Include="Decorated\DeleteDecoratedTests.cs" />
+    <Compile Include="Decorated\LinqQueriesDecoratedTests.cs" />
+    <Compile Include="Decorated\SqlQueryDecoratedTests.cs" />
+    <Compile Include="Decorated\UpdateDecoratedTests.cs" />
     <Compile Include="Common\TestDatabase.cs" />
-    <Compile Include="DecoratedTests\InsertDecoratedTests.cs" />
-    <Compile Include="DecoratedTests\SimpleQueryDecoratedTests.cs" />
+    <Compile Include="Decorated\InsertDecoratedTests.cs" />
+    <Compile Include="Decorated\SimpleQueryDecoratedTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

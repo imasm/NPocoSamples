@@ -1,10 +1,10 @@
 ﻿using System;
 using NPoco;
 using NPocoSamples.Common;
-using NPocoSamples.DecoratedModels;
+using NPocoSamples.Decorated.Models;
 using NUnit.Framework;
 
-namespace NPocoSamples.DecoratedTests
+namespace NPocoSamples.Decorated
 {
     [TestFixture]
     public class InsertDecoratedTests: BaseTests
@@ -29,7 +29,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new TestDatabase(DbInfo.Name))
             {
-                var category = new CategoryDecorated()
+                var category = new Category()
                 {
                     //CategoryId = 9, this is ignored becouse AutoIncrement is defined in the model
                     CategoryName = "Custom Category",
@@ -56,7 +56,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = new CustomerDecorated()
+                var customer = new Customer()
                 {
                     CustomerId = "DEMO",
                     CompanyName = "My company"

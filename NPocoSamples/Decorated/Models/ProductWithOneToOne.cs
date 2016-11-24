@@ -1,10 +1,10 @@
 using NPoco;
 
-namespace NPocoSamples.DecoratedModels
+namespace NPocoSamples.Decorated.Models
 {
     [TableName("Products")]
     [PrimaryKey("ProductId")]
-    public class ProductWithOneToOneDecorated
+    public class ProductWithOneToOne
     {
         public int ProductId { get; set; }
         public string ProductName { get; set; }
@@ -18,6 +18,6 @@ namespace NPocoSamples.DecoratedModels
         public bool Discontinued { get; set; }
         
         [Reference(ReferenceType.OneToOne, ColumnName = "CategoryId", ReferenceMemberName = "CategoryId")]
-        public CategoryDecorated Category { get; set; }
+        public Category Category { get; set; }
     }
 }

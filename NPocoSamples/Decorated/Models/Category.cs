@@ -1,10 +1,10 @@
 using NPoco;
 
-namespace NPocoSamples.DecoratedModels
+namespace NPocoSamples.Decorated.Models
 {
     [TableName("Categories")]
     [PrimaryKey("CategoryId")]
-    public class CategoryDecorated
+    public class Category
     {
         public int CategoryId { get; set; }
         public string CategoryName { get; set; }

@@ -2,10 +2,10 @@
 using System.Linq;
 using NPoco;
 using NPocoSamples.Common;
-using NPocoSamples.DecoratedModels;
+using NPocoSamples.Decorated.Models;
 using NUnit.Framework;
 
-namespace NPocoSamples.DecoratedTests
+namespace NPocoSamples.Decorated
 {
     [TestFixture]
     public class SimpleQueryDecoratedTests : BaseTests
@@ -15,7 +15,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                var result = db.SingleById<ProductDecorated>(1);
+                var result = db.SingleById<Product>(1);
                 Assert.That(result, Is.Not.Null);
                 AssertIsProduct1(result);
             }
@@ -28,7 +28,7 @@ namespace NPocoSamples.DecoratedTests
             {
                 using (var db = new Database(DbInfo.Name))
                 {
-                    db.SingleById<ProductDecorated>(9999);
+                    db.SingleById<Product>(9999);
                 }
             }, Throws.Exception);
         }
@@ -38,7 +38,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                var result = db.SingleOrDefaultById<ProductDecorated>(9999);
+                var result = db.SingleOrDefaultById<Product>(9999);
                 Assert.That(result, Is.Null);
             }
         }
@@ -48,7 +48,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                List<ProductDecorated> result = db.Fetch<ProductDecorated>();
+                List<Product> result = db.Fetch<Product>();
                 Output(result);
 
                 Assert.That(result.Count, Is.EqualTo(77));
@@ -61,8 +61,8 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                IEnumerable<ProductDecorated> result = db
-                    .Query<ProductDecorated>()
+                IEnumerable<Product> result = db
+                    .Query<Product>()
                     .ToEnumerable();
                 Output(result);
             }
@@ -74,8 +74,8 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                List<ProductDecorated> result = db
-                    .Query<ProductDecorated>()
+                List<Product> result = db
+                    .Query<Product>()
                     .Where(x => x.CategoryId == 1)
                     .ToList();
                 Output(result);
@@ -90,13 +90,13 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                List<ProductDecorated> result = db
-                    .Query<ProductDecorated>()
+                List<Product> result = db
+                    .Query<Product>()
                     .OrderBy(x => x.ProductId)
                     .ToList();
                 Output(result);
 
-                List<ProductDecorated> orderedList = result
+                List<Product> orderedList = result
                     .OrderBy(x => x.ProductId)
                     .ToList();
 
@@ -109,14 +109,14 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                List<ProductDecorated> result = db
-                    .Query<ProductDecorated>()
+                List<Product> result = db
+                    .Query<Product>()
                     .OrderByDescending(x => x.ProductId)
                     .ToList();
 
                 Output(result);
 
-                List<ProductDecorated> orderedList = result
+                List<Product> orderedList = result
                     .OrderByDescending(x => x.ProductId)
                     .ToList();
 
@@ -129,15 +129,15 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                List<ProductDecorated> result = db
-                    .Query<ProductDecorated>()
+                List<Product> result = db
+                    .Query<Product>()
                     .OrderBy(x => x.CategoryId)
                     .ThenBy(x => x.ProductId)
                     .ToList();
 
                 Output(result);
 
-                List<ProductDecorated> orderedList = result
+                List<Product> orderedList = result
                      .OrderBy(x => x.CategoryId)
                     .ThenBy(x => x.ProductId)
                     .ToList();
@@ -151,8 +151,8 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new Database(DbInfo.Name))
             {
-                List<ProductDecorated> result = db
-                    .Query<ProductDecorated>()
+                List<Product> result = db
+                    .Query<Product>()
                     .Limit(10)
                     .ToList();
 
@@ -167,7 +167,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new Database(DbInfo.Name))
             {
                 int result = db
-                    .Query<ProductDecorated>()
+                    .Query<Product>()
                     .Where(x=>x.CategoryId == 1)
                     .Count();
 
@@ -175,7 +175,7 @@ namespace NPocoSamples.DecoratedTests
             }
         }
 
-        private void AssertIsProduct1(ProductDecorated product)
+        private void AssertIsProduct1(Product product)
         {
             Assert.That(product.ProductId, Is.EqualTo(1));
             Assert.That(product.ProductName, Is.EqualTo("Chai"));

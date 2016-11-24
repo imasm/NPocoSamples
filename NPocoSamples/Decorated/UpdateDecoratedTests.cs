@@ -1,10 +1,10 @@
 ﻿using System.Collections.Generic;
 using NPoco;
 using NPocoSamples.Common;
-using NPocoSamples.DecoratedModels;
+using NPocoSamples.Decorated.Models;
 using NUnit.Framework;
 
-namespace NPocoSamples.DecoratedTests
+namespace NPocoSamples.Decorated
 {
     [TestFixture]
     public class UpdateDecoratedTests: BaseTests
@@ -16,7 +16,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new Database(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = new CustomerDecorated()
+                var customer = new Customer()
                 {
                     CustomerId = "DEMO",
                     CompanyName = "My company",
@@ -46,7 +46,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = db.SingleById<CustomerDecorated>("DEMO");
+                var customer = db.SingleById<Customer>("DEMO");
                 customer.CompanyName = "Second company";
                 customer.ContactName = "Michael Lauson";
 
@@ -54,7 +54,7 @@ namespace NPocoSamples.DecoratedTests
                 Output("Items updated = " + rowsUpdated);
                 
             
-                customer = db.SingleById<CustomerDecorated>("DEMO");
+                customer = db.SingleById<Customer>("DEMO");
 
                 Assert.That(customer.CompanyName, Is.EqualTo("Second company"));
                 Assert.That(customer.ContactName, Is.EqualTo("Michael Lauson"));
@@ -70,7 +70,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = db.SingleById<CustomerDecorated>("DEMO");
+                var customer = db.SingleById<Customer>("DEMO");
                 string originalContactName = customer.ContactName;
 
                 customer.CompanyName = "Third company";
@@ -81,7 +81,7 @@ namespace NPocoSamples.DecoratedTests
                 
                 Output("Items updated = " + rowsUpdated);
 
-                customer = db.SingleById<CustomerDecorated>("DEMO");
+                customer = db.SingleById<Customer>("DEMO");
 
                 Assert.That(customer.CompanyName, Is.EqualTo("Third company"));
                 Assert.That(customer.ContactName, Is.EqualTo(originalContactName));
@@ -95,9 +95,9 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = db.SingleById<CustomerDecorated>("DEMO");
+                var customer = db.SingleById<Customer>("DEMO");
 
-                Snapshot<CustomerDecorated> snapshot = db.StartSnapshot(customer);
+                Snapshot<Customer> snapshot = db.StartSnapshot(customer);
 
                 customer.CompanyName = "Four company";
                 customer.ContactName = "Oliver Hassel";

@@ -1,9 +1,9 @@
 ﻿using NPoco;
 using NPocoSamples.Common;
-using NPocoSamples.DecoratedModels;
+using NPocoSamples.Decorated.Models;
 using NUnit.Framework;
 
-namespace NPocoSamples.DecoratedTests
+namespace NPocoSamples.Decorated
 {
     [TestFixture]
     public class DeleteDecoratedTests: BaseTests
@@ -28,7 +28,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new Database(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = new CustomerDecorated()
+                var customer = new Customer()
                 {
                     CustomerId = "DEMO",
                     CompanyName = "My company",
@@ -46,7 +46,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                var customer = db.SingleById<CustomerDecorated>("DEMO");
+                var customer = db.SingleById<Customer>("DEMO");
                 int deleted = db.Delete(customer);
                 db.CompleteTransaction();
                 Assert.That(deleted, Is.EqualTo(1));
@@ -61,7 +61,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                int deleted = db.Delete<CustomerDecorated>((object)"DEMO");
+                int deleted = db.Delete<Customer>((object)"DEMO");
                 db.CompleteTransaction();
                 Assert.That(deleted, Is.EqualTo(1));
             }
@@ -75,7 +75,7 @@ namespace NPocoSamples.DecoratedTests
             using (var db = new TestDatabase(DbInfo.Name))
             {
                 db.BeginTransaction();
-                int deleted = db.Delete<CustomerDecorated>("where CustomerId = @0", "DEMO");
+                int deleted = db.Delete<Customer>("where CustomerId = @0", "DEMO");
                 db.CompleteTransaction();
                 Assert.That(deleted, Is.EqualTo(1));
             }
@@ -88,7 +88,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new TestDatabase(DbInfo.Name))
             {
-                var customer = db.SingleOrDefaultById<CustomerDecorated>(customerId);
+                var customer = db.SingleOrDefaultById<Customer>(customerId);
                 Assert.That(customer, Is.Null);
             }
         }

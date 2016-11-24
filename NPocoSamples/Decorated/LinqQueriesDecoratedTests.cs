@@ -1,8 +1,8 @@
 ﻿using NPocoSamples.Common;
-using NPocoSamples.DecoratedModels;
+using NPocoSamples.Decorated.Models;
 using NUnit.Framework;
 
-namespace NPocoSamples.DecoratedTests
+namespace NPocoSamples.Decorated
 {
     [TestFixture]
     public class LinqQueriesDecoratedTests
@@ -12,7 +12,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new TestDatabase(DbInfo.Name))
             {
-                ProductWithForeingDecorated product = db.Query<ProductWithForeingDecorated>()
+                ProductWithForeing product = db.Query<ProductWithForeing>()
                     .Include(x => x.Category)
                     .FirstOrDefault(x=>x.ProductId == 1);
 
@@ -26,7 +26,7 @@ namespace NPocoSamples.DecoratedTests
         {
             using (var db = new TestDatabase(DbInfo.Name))
             {
-                ProductWithOneToOneDecorated product = db.Query<ProductWithOneToOneDecorated>()
+                ProductWithOneToOne product = db.Query<ProductWithOneToOne>()
                     .Include(x => x.Category)
                     .FirstOrDefault(x => x.ProductId == 1);
 
